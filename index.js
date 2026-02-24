@@ -20,6 +20,10 @@ const clientes = [
     { nombre: "Pablo Pérez", edad: 15, tickets: 2 },     // Menor
     { nombre: "María López", edad: 70, tickets: 1 },     // Mayor
     // TODO: Agrega 4 clientes más siguiendo esta estructura
+    { nombre: "Emilio López", edad: 80, tickets: 11}, //Mayor
+    { nombre: "Eduardo Vivanco", edad: 33, tickets: 10},
+    { nombre: "Alex Villa", edad: 40, tickets: 4},
+    { nombre: "Domenica Padilla", edad: 14, tickets: 6}, //Menor
     // Asegúrate de incluir: 1 menor más, 1 mayor más, y 2 adultos (18-64 años)
 ];
 
@@ -32,30 +36,36 @@ console.log("========================================");
 console.log("  SISTEMA DE TICKETS DEL METRO");
 console.log("========================================\n");
 
-// TODO: Crea un bucle for que recorra el array 'clientes'
+// Crea un bucle for que recorra el array 'clientes'
 for (let i = 0; i < clientes.length; i++) {
     
-    // TODO: Paso 1 - Obtén los datos del cliente actual
+    // Paso 1 - Obtén los datos del cliente actual
     let cliente = clientes[i];
     let nombre = cliente.nombre;
     let edad = cliente.edad;
     let cantidadTickets = cliente.tickets;
     
-    // TODO: Paso 2 - Calcula el precio sin descuento
+    // Paso 2 - Calcula el precio sin descuento
     // Multiplica PRECIO_BASE por cantidadTickets
-    let precioSinDescuento = 0; // Reemplaza 0 con el cálculo correcto
+    let precioSinDescuento = PRECIO_BASE * cantidadTickets; // Reemplaza 0 con el cálculo correcto
     
-    // TODO: Paso 3 - Calcula el descuento según la edad
+    // Paso 3 - Calcula el descuento según la edad
     let descuento = 0;
     // Si edad < 18, descuento = 0.50 (50%)
+    if (edad < 18) {
+        descuento = 0,50; 
+    }
     // Si edad >= 65, descuento = 0.30 (30%)
+    else if (edad >= 65) {
+        descuento = 0,30;
+    }
     // Si no, descuento = 0 (sin descuento)
     
-    // TODO: Paso 4 - Calcula el precio con descuento
+    // Paso 4 - Calcula el precio con descuento
     // Resta al precioSinDescuento el monto del descuento
-    let precioConDescuento = 0; // Reemplaza 0 con el cálculo correcto
+    let precioConDescuento = precioSinDescuento - (precioSinDescuento * descuento); // Reemplaza 0 con el cálculo correcto
     
-    // TODO: Paso 5 - Muestra el reporte del cliente
+    // Paso 5 - Muestra el reporte del cliente
     console.log("Cliente: " + nombre);
     console.log("Edad: " + edad + " años");
     console.log("Tickets: " + cantidadTickets);
@@ -70,4 +80,3 @@ for (let i = 0; i < clientes.length; i++) {
 // EXPORTAR (para las pruebas)
 // =========================================
 module.exports = { clientes, PRECIO_BASE };
-
